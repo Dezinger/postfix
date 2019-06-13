@@ -1,7 +1,7 @@
 default['postfix']['options']['myhostname'] = node['fqdn']
 default['postfix']['options']['mydomain']   = node['domain']
 default['postfix']['options']['myorigin']   = '$myhostname'
-default['postfix']['options']['mydestination'] = "#{fqdn}, #{node['hostname']}, localhost.localdomain, localhost"
+default['postfix']['options']['mydestination'] = "#{node['fqdn']}, #{node['hostname']}, localhost.localdomain, localhost"
 default['postfix']['options']['mynetworks'] = '127.0.0.0/8'
 default['postfix']['options']['inet_interfaces'] = 'loopback-only'
 default['postfix']['options']['inet_protocols'] = 'ipv4'
