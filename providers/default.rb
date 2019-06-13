@@ -35,6 +35,8 @@ action :create do
   options = Chef::Mixin::DeepMerge.merge(node['postfix']['options'], new_resource.options)
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
+  Chef::Log.info("#{instances_list.first} #{new_resource.name}")
+
   if instances_list.first == new_resource.name
 
     instance_prefix = ''
