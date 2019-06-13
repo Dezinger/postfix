@@ -36,7 +36,7 @@ action :create do
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
     log 'message' do
-      message "#{instances_list.first} #{new_resource.name}"
+      message "#{instances_list} #{new_resource}"
       level :info
     end
 
