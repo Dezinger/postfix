@@ -39,10 +39,12 @@ action :create do
 
     resources_to_display = run_context.resource_collection.all_resources
 
-    log 'message' do
-      message "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
-      level :info
-    end
+    #log 'message' do
+    #  message "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
+    #  level :info
+    #end
+
+    Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
 
 
   if instances_list.first == new_resource.name
