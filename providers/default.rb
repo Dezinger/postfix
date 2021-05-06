@@ -31,30 +31,11 @@ action :create do
   instances_list = []
   instances_list << "default"
   node['postfix']['instances'].map { |instance| instances_list << instance }
-  #run_context.resource_collection.all_resources.select.map { |resource| instances_list << resource.name if resource.resource_name == :postfix }
   instances_list.sort!
 
   options = Chef::Mixin::DeepMerge.merge(node['postfix']['options'], new_resource.options)
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
-
-    #resources_to_display = run_context.resource_collection.all_resources.select
-
-    #log 'message' do
-    #  message "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
-    #  level :info
-    #end
-
-    #Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
-
-    puts "\n >>>>> #{instances_list.size} #{new_resource.name} #{instances_list.first}"
-    #run_context.resource_collection.all_resources.select.each do |r|
-    #    puts "\n #{r}  FROM   #{r.resource_name}"
-    #end
-
-    # instances_list.first == new_resource.name
-
-  #if new_resource.name == 'default'
   if instances_list.first == new_resource.name
 
     instance_prefix = ''
