@@ -28,15 +28,15 @@
 action :create do
   package 'postfix'
 
-  instances_list = []
-  run_context.resource_collection.all_resources.map { |resource| instances_list << resource.name if resource.resource_name == :postfix }
+  instances_list = ['mailer']
+  #run_context.resource_collection.all_resources.map { |resource| instances_list << resource.name if resource.resource_name == :postfix }
   instances_list.sort!
 
   options = Chef::Mixin::DeepMerge.merge(node['postfix']['options'], new_resource.options)
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
 
-    #resources_to_display = run_context.resource_collection.all_resources
+    resources_to_display = run_context.resource_collection.all_resources
 
     #log 'message' do
     #  message "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
@@ -49,6 +49,9 @@ action :create do
     #run_context.resource_collection.all_resources.each do |r|
     #    puts "\n #{r}  FROM   #{r.resource_name}"
     #end
+
+    # instances_list.first == new_resource.name
+
 
   if new_resource.name == 'default'
 
