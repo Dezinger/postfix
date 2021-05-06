@@ -28,7 +28,8 @@
 action :create do
   package 'postfix'
 
-  instances_list = ['mailer']
+  instances_list = []
+  instances_list << "mailer"
   #run_context.resource_collection.all_resources.map { |resource| instances_list << resource.name if resource.resource_name == :postfix }
   instances_list.sort!
 
