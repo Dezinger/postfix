@@ -36,7 +36,6 @@ action :create do
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
 
-
     resources_to_display = run_context.resource_collection.all_resources
 
     #log 'message' do
@@ -46,7 +45,10 @@ action :create do
 
     #Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
 
-    puts "\n >>>>> #{instances_list.size} #{new_resource.name} #{resources_to_display.size} #{resources_to_display}"
+    puts "\n >>>>> #{instances_list.size} #{new_resource.name} #{resources_to_display.size} #{resources_to_display.first.resource_name}"
+    run_context.resource_collection.all_resources.each do |r|
+        puts "\n #{r}  FROM   #{r.resource_name}"
+    end
 
   if instances_list.first == new_resource.name
 
