@@ -46,7 +46,7 @@ action :create do
 
     #Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
 
-    puts "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
+    puts "\n >>>>> #{instances_list.size} #{new_resource.name} #{resources_to_display.size} #{resources_to_display}"
 
   if instances_list.first == new_resource.name
 
