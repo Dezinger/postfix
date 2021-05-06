@@ -35,10 +35,15 @@ action :create do
   options = Chef::Mixin::DeepMerge.merge(node['postfix']['options'], new_resource.options)
   master_options = Chef::Mixin::DeepMerge.merge(node['postfix']['master_options'], new_resource.master_options)
 
+
+
+    resources_to_display = run_context.resource_collection.all_resources
+
     log 'message' do
-      message "#{instances_list} #{new_resource}"
+      message "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
       level :info
     end
+
 
   if instances_list.first == new_resource.name
 
