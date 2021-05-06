@@ -28,8 +28,9 @@
 action :create do
   package 'postfix'
 
-  instances_list = ["default"]
-  instances_list = Chef::Mixin::DeepMerge.merge(instances_list, node['postfix']['instances'])
+  instances_list = []
+  instances_list << "default"
+  node['postfix']['instances'].map { |instance| instances_list << instance }
   #run_context.resource_collection.all_resources.select.map { |resource| instances_list << resource.name if resource.resource_name == :postfix }
   instances_list.sort!
 
