@@ -17,3 +17,5 @@ default['postfix']['options']['alias_database'] = 'hash:/etc/aliases'
 default['postfix']['options']['smtpd_relay_restrictions'] = 'permit_mynetworks, reject_unauth_destination'
 
 default['postfix']['master_options']['smtpd_port'] = 'smtp'
+
+default['postfix']['instances'] = []
