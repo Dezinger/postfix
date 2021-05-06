@@ -44,8 +44,9 @@ action :create do
     #  level :info
     #end
 
-    Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
+    #Chef::Log.info("#{instances_list.size} #{new_resource.name} #{resources_to_display.size}")
 
+    puts "#{instances_list.size} #{new_resource.name} #{resources_to_display.size}"
 
   if instances_list.first == new_resource.name
 
